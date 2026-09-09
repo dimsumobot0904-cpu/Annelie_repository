@@ -16,7 +16,7 @@ app = Flask(__name__)
 app.secret_key = 'hatchguard_secret_key_123'
 DB_NAME = "ulang_data.db"
 
-#testtesttest
+
 
 # MQTT Configuration1
 MQTT_BROKER = "localhost" 
