@@ -112,7 +112,7 @@
         transition: width 0.4s ease;
     }
 
-    /* 2. Sensor Toggle Switches (3 Relays Only) */
+    /* 2. Sensor Toggle Switches */
     .toggles-bar {
         display: flex;
         justify-content: space-between;
@@ -183,7 +183,7 @@
         transform: translateX(18px);
     }
 
-    /* 3. Sensor Cards Grid (3x2 Grid) */
+    /* 3. Sensor Cards Grid */
     .sensors-grid-3x2 {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
@@ -261,8 +261,8 @@
     }
 
     .range-bar-footer.amber {
-        border-bottom-color: #f59e0b;
-        color: #b45309;
+        border-bottom-color: #ef4444;
+        color: #b91c1c;
     }
 
     /* 4. Automated Feeding System */
@@ -279,82 +279,6 @@
         font-weight: 700;
         color: #94a3b8;
     }
-
-    /* 5. AI/ML Models Predictions Cards */
-    .ml-cards-grid {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 20px;
-    }
-
-    @media (max-width: 768px) {
-        .ml-cards-grid {
-            grid-template-columns: 1fr;
-        }
-    }
-
-    .ml-card {
-        background: white;
-        border-radius: 12px;
-        padding: 20px;
-        border: 1px solid #e2e8f0;
-    }
-
-    .ml-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        font-weight: 700;
-        font-size: 0.95rem;
-        margin-bottom: 15px;
-    }
-
-    .ml-badge {
-        font-size: 0.7rem;
-        font-weight: 800;
-        padding: 2px 8px;
-        border-radius: 4px;
-        color: white;
-    }
-
-    .ml-val {
-        font-size: 2.5rem;
-        font-weight: 800;
-        text-align: center;
-        margin: 10px 0 2px 0;
-    }
-
-    .ml-lbl {
-        font-size: 0.75rem;
-        color: #64748b;
-        text-align: center;
-        font-weight: 600;
-    }
-
-    .ml-subdetails {
-        display: flex;
-        justify-content: space-between;
-        margin-top: 15px;
-        padding-top: 12px;
-        border-top: 1px solid #f1f5f9;
-        font-size: 0.8rem;
-    }
-
-    .ml-subdetails span {
-        font-weight: 800;
-        display: block;
-        font-size: 0.95rem;
-        color: #1e293b;
-    }
-
-    .ml-footer-note {
-        font-size: 0.7rem;
-        color: #94a3b8;
-        margin-top: 12px;
-        display: flex;
-        align-items: flex-start;
-        gap: 5px;
-    }
 </style>
 {% endblock %}
 
@@ -364,16 +288,12 @@
 <div class="dashboard-card">
     <div class="timeline-grid">
         <div>
-            <div class="timeline-title"><i class="fa-regular fa-calendar-check" style="color: #00a8cc;"></i> Monitoring
-                Timeline</div>
-            <div style="font-size: 0.75rem; font-weight: 700; color: #64748b; margin-bottom: 5px;">Day 1 Start Date
-            </div>
+            <div class="timeline-title"><i class="fa-regular fa-calendar-check" style="color: #00a8cc;"></i> Monitoring Timeline</div>
+            <div style="font-size: 0.75rem; font-weight: 700; color: #64748b; margin-bottom: 5px;">Day 1 Start Date</div>
 
             <div class="input-lock-group">
-                <input type="date" id="timeline-date" value="2026-07-20" disabled
-                    style="background-color: #f1f5f9; width: 100%;">
-                <button type="button" id="btn-toggle-timeline" class="btn-teal"
-                    onclick="toggleLock('timeline-date', 'btn-toggle-timeline')">
+                <input type="date" id="timeline-date" value="2026-07-20" disabled style="background-color: #f1f5f9; width: 100%;">
+                <button type="button" id="btn-toggle-timeline" class="btn-teal" onclick="toggleLock('timeline-date', 'btn-toggle-timeline')">
                     <i class="fa-solid fa-lock"></i> <span class="btn-text">Unlock</span>
                 </button>
             </div>
@@ -387,13 +307,11 @@
 
         <div class="window-info">
             <div style="font-size: 0.8rem; font-weight: 700; color: #1e293b;">Expected Post Larvae Window</div>
-            <div style="font-size: 0.8rem; font-weight: 800; color: #334155;">Day 20 - 30 <span id="window-date-text"
-                    style="font-weight: 500; color: #64748b;">(2026-03-10 to 2026-03-20)</span></div>
+            <div style="font-size: 0.8rem; font-weight: 800; color: #334155;">Day 20 - 30 <span id="window-date-text" style="font-weight: 500; color: #64748b;">(2026-03-10 to 2026-03-20)</span></div>
             <div class="progress-bar-bg">
                 <div id="progress-bar-fill" class="progress-bar-fill" style="width: 0%;"></div>
             </div>
-            <div id="progress-text" style="font-size: 0.7rem; color: #64748b; margin-top: 4px; font-weight: 600;">
-                Progress to Day 30: 0.0%</div>
+            <div id="progress-text" style="font-size: 0.7rem; color: #64748b; margin-top: 4px; font-weight: 600;">Progress to Day 30: 0.0%</div>
         </div>
     </div>
 </div>
@@ -423,7 +341,7 @@
     </div>
 </div>
 
-<!-- 3. Sensor Cards Grid -->
+<!-- 3. Real-Time Sensor Cards Grid -->
 <div class="sensors-grid-3x2">
     <!-- 1. Temperature -->
     <div class="sensor-metric-card">
@@ -482,13 +400,9 @@
 
 <!-- 4. Automated Feeding System Card -->
 <div class="dashboard-card">
-    <div
-        style="font-weight: 700; font-size: 1.05rem; color: #1e293b; margin-bottom: 15px; display: flex; justify-content: space-between; align-items: center;">
-        <span><i class="fa-solid fa-robot" style="color: #00a8cc;"></i> Automated Feeding System (Servo Motor
-            180°)</span>
-        <span
-            style="background: #22c55e; color: white; font-size: 0.75rem; padding: 3px 10px; border-radius: 4px; font-weight: 800;">System
-            Active</span>
+    <div style="font-weight: 700; font-size: 1.05rem; color: #1e293b; margin-bottom: 15px; display: flex; justify-content: space-between; align-items: center;">
+        <span><i class="fa-solid fa-robot" style="color: #00a8cc;"></i> Automated Feeding System (Servo Motor 180°)</span>
+        <span style="background: #22c55e; color: white; font-size: 0.75rem; padding: 3px 10px; border-radius: 4px; font-weight: 800;">System Active</span>
     </div>
 
     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
@@ -499,8 +413,7 @@
                 <span style="font-weight: 700; color: #64748b;">/ 4</span>
                 <button class="btn-teal" type="button"><i class="fa-solid fa-rotate-left"></i></button>
             </div>
-            <div style="font-size: 0.75rem; color: #22c55e; font-weight: 700; margin-bottom: 15px;">Status: 0/4
-                Completed Today</div>
+            <div style="font-size: 0.75rem; color: #22c55e; font-weight: 700; margin-bottom: 15px;">Status: 0/4 Completed Today</div>
 
             <div style="display: flex; gap: 10px; align-items: center; margin-top: 15px;">
                 <button type="button" class="btn-teal" onclick="simulateFeeding()" style="padding: 10px 20px;">
@@ -514,37 +427,29 @@
             <div class="schedule-grid-2x2">
                 <div class="sched-item">
                     <div class="input-lock-group">
-                        <input type="time" id="sched-1" value="06:00" style="width: 100%; background: #f1f5f9;"
-                            disabled>
-                        <button type="button" id="btn-sched-1" class="btn-teal"
-                            onclick="toggleSaveField('sched-1', 'btn-sched-1')"><i class="fa-solid fa-pen"></i></button>
+                        <input type="time" id="sched-1" value="06:00" style="width: 100%; background: #f1f5f9;" disabled>
+                        <button type="button" id="btn-sched-1" class="btn-teal" onclick="toggleSaveField('sched-1', 'btn-sched-1')"><i class="fa-solid fa-pen"></i></button>
                     </div>
                     <label>Feeding 1</label>
                 </div>
                 <div class="sched-item">
                     <div class="input-lock-group">
-                        <input type="time" id="sched-2" value="12:00" style="width: 100%; background: #f1f5f9;"
-                            disabled>
-                        <button type="button" id="btn-sched-2" class="btn-teal"
-                            onclick="toggleSaveField('sched-2', 'btn-sched-2')"><i class="fa-solid fa-pen"></i></button>
+                        <input type="time" id="sched-2" value="12:00" style="width: 100%; background: #f1f5f9;" disabled>
+                        <button type="button" id="btn-sched-2" class="btn-teal" onclick="toggleSaveField('sched-2', 'btn-sched-2')"><i class="fa-solid fa-pen"></i></button>
                     </div>
                     <label>Feeding 2</label>
                 </div>
                 <div class="sched-item">
                     <div class="input-lock-group">
-                        <input type="time" id="sched-3" value="18:00" style="width: 100%; background: #f1f5f9;"
-                            disabled>
-                        <button type="button" id="btn-sched-3" class="btn-teal"
-                            onclick="toggleSaveField('sched-3', 'btn-sched-3')"><i class="fa-solid fa-pen"></i></button>
+                        <input type="time" id="sched-3" value="18:00" style="width: 100%; background: #f1f5f9;" disabled>
+                        <button type="button" id="btn-sched-3" class="btn-teal" onclick="toggleSaveField('sched-3', 'btn-sched-3')"><i class="fa-solid fa-pen"></i></button>
                     </div>
                     <label>Feeding 3</label>
                 </div>
                 <div class="sched-item">
                     <div class="input-lock-group">
-                        <input type="time" id="sched-4" value="00:00" style="width: 100%; background: #f1f5f9;"
-                            disabled>
-                        <button type="button" id="btn-sched-4" class="btn-teal"
-                            onclick="toggleSaveField('sched-4', 'btn-sched-4')"><i class="fa-solid fa-pen"></i></button>
+                        <input type="time" id="sched-4" value="00:00" style="width: 100%; background: #f1f5f9;" disabled>
+                        <button type="button" id="btn-sched-4" class="btn-teal" onclick="toggleSaveField('sched-4', 'btn-sched-4')"><i class="fa-solid fa-pen"></i></button>
                     </div>
                     <label>Feeding 4</label>
                 </div>
@@ -553,66 +458,45 @@
     </div>
 </div>
 
-<!-- 5. AI/ML Model Predictions Cards (Updated para sa LSTM Forecast + SVM Status) -->
+<!-- 5. AI/ML Predictions Cards (Naka-Box Grid gaya ng Sensor Cards) -->
 <div class="dashboard-card" style="background: transparent; border: none; padding: 0; box-shadow: none;">
-    <div
-        style="font-weight: 700; font-size: 1rem; color: #1e293b; margin-bottom: 15px; display: flex; align-items: center; gap: 8px;">
-        <i class="fa-solid fa-brain" style="color: #8b5cf6;"></i> Hybrid AI Pipeline — LSTM Future Forecasting & SVM
-        Safety Analysis
+    <div style="font-weight: 700; font-size: 1rem; color: #1e293b; margin-bottom: 15px; display: flex; justify-content: space-between; align-items: center;">
+        <span><i class="fa-solid fa-brain" style="color: #8b5cf6;"></i> Hybrid AI Pipeline — 30-Min Forecast & Safety Analysis</span>
+        <span id="overall-ai-badge" style="background: #22c55e; color: white; font-size: 0.75rem; padding: 4px 12px; border-radius: 6px; font-weight: 800;">
+            OVERALL STATUS: SAFE
+        </span>
     </div>
 
-    <div class="ml-cards-grid">
-        <!-- Support Vector Machine (SVM) - Safety Evaluator -->
-        <div class="ml-card">
-            <div class="ml-header">
-                <span style="display: flex; align-items: center; gap: 6px; color: #00a8cc;"><i
-                        class="fa-solid fa-shield-halved"></i> SVM Water Safety Status</span>
-                <span class="ml-badge" style="background: #00a8cc;">SVM</span>
-            </div>
-            <div class="ml-val" id="svm-status" style="color: #22c55e; font-size: 2rem;">ANALYZING...</div>
-            <div class="ml-lbl">Future Water Quality Verdict</div>
-
-            <div class="ml-subdetails">
-                <div>Evaluated Parameter <span id="svm-eval-target" style="font-size: 0.85rem;">Based on LSTM
-                        Trend</span></div>
-                <div style="text-align: right;">Risk Level <span id="svm-risk-level"
-                        style="font-size: 0.85rem; color: #22c55e;">Normal</span></div>
-            </div>
-            <div class="ml-footer-note"><i class="fa-solid fa-circle-info"></i> Relies on LSTM's future parameter
-                predictions to classify if the environment is safe or unsafe.</div>
+    <!-- 3 Box Cards Grid para sa AI Predictions -->
+    <div class="sensors-grid-3x2" style="margin-bottom: 0;">
+        
+        <!-- 1. Temperature AI Forecast Card -->
+        <div class="sensor-metric-card">
+            <div class="sensor-val" id="card-forecast-temp">-- <span>°C</span></div>
+            <div class="sensor-ts">Prediction (+30 Mins)</div>
+            <div class="sensor-lbl">Temperature Forecast</div>
+            <i class="fa-solid fa-thermometer-half sensor-icon-lg" style="color: #8b5cf6;"></i>
+            <div class="range-bar-footer green" id="card-svm-temp">SVM Status: Safe ✅</div>
         </div>
 
-        <!-- Long Short-Term Memory (LSTM) - Future Forecaster -->
-        <div class="ml-card">
-            <div class="ml-header">
-                <span style="display: flex; align-items: center; gap: 6px; color: #8b5cf6;"><i
-                        class="fa-solid fa-chart-line"></i> LSTM Future Forecast (+30 mins)</span>
-                <span class="ml-badge" style="background: #8b5cf6;">LSTM</span>
-            </div>
-
-            <div style="display: grid; grid-template-columns: repeat(3, 1fr); text-align: center; margin: 12px 0;">
-                <div>
-                    <div style="font-size: 0.7rem; color: #64748b; font-weight: 700;">TEMP</div>
-                    <div id="forecast-temp" style="font-size: 1.2rem; font-weight: 800; color: #8b5cf6;">-- °C</div>
-                </div>
-                <div>
-                    <div style="font-size: 0.7rem; color: #64748b; font-weight: 700;">pH</div>
-                    <div id="forecast-ph" style="font-size: 1.2rem; font-weight: 800; color: #8b5cf6;">--</div>
-                </div>
-                <div>
-                    <div style="font-size: 0.7rem; color: #64748b; font-weight: 700;">DO</div>
-                    <div id="forecast-do" style="font-size: 1.2rem; font-weight: 800; color: #8b5cf6;">-- ppm</div>
-                </div>
-            </div>
-
-            <div class="ml-subdetails" style="margin-top: 18px;">
-                <div>Prediction Window <span style="font-size: 0.85rem;">Next 30 Minutes</span></div>
-                <div style="text-align: right;">Model Status <span style="font-size: 0.85rem; color: #8b5cf6;">Active
-                        Sequence</span></div>
-            </div>
-            <div class="ml-footer-note"><i class="fa-solid fa-circle-info"></i> Recurrent Neural Network forecasting
-                trend changes based on recent sensor history.</div>
+        <!-- 2. pH Level AI Forecast Card -->
+        <div class="sensor-metric-card">
+            <div class="sensor-val" id="card-forecast-ph">-- <span>PH</span></div>
+            <div class="sensor-ts">Prediction (+30 Mins)</div>
+            <div class="sensor-lbl">pH Level Forecast</div>
+            <i class="fa-solid fa-droplet sensor-icon-lg" style="color: #8b5cf6;"></i>
+            <div class="range-bar-footer green" id="card-svm-ph">SVM Status: Safe ✅</div>
         </div>
+
+        <!-- 3. Dissolved Oxygen AI Forecast Card -->
+        <div class="sensor-metric-card">
+            <div class="sensor-val" id="card-forecast-do">-- <span>ppm</span></div>
+            <div class="sensor-ts">Prediction (+30 Mins)</div>
+            <div class="sensor-lbl">Dissolved Oxygen Forecast</div>
+            <i class="fa-solid fa-wind sensor-icon-lg" style="color: #8b5cf6;"></i>
+            <div class="range-bar-footer green" id="card-svm-do">SVM Status: Safe ✅</div>
+        </div>
+
     </div>
 </div>
 
@@ -685,7 +569,7 @@
         }
     }
 
-    // Toggle para sa Feeding Schedule Fields + Save sa Python
+    // Toggle para sa Feeding Schedule Fields
     function toggleSaveField(inputId, buttonId) {
         const inputEl = document.getElementById(inputId);
         const btnEl = document.getElementById(buttonId);
@@ -731,7 +615,46 @@
             .catch(error => console.error("Error updating schedule:", error));
     }
 
-    // Live Sensor Updates from Flask Backend
+    // FETCH AI PREDICTIONS FUNCTION
+    function updateAIPredictions() {
+        fetch('/predict_ai')
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === 'success') {
+                    // 1. Update LSTM Forecast Box Values
+                    if (document.getElementById('card-forecast-temp'))
+                        document.getElementById('card-forecast-temp').innerHTML = `${data.forecast_temp} <span>°C</span>`;
+                    if (document.getElementById('card-forecast-ph'))
+                        document.getElementById('card-forecast-ph').innerHTML = `${data.forecast_ph} <span>PH</span>`;
+                    if (document.getElementById('card-forecast-do'))
+                        document.getElementById('card-forecast-do').innerHTML = `${data.forecast_do} <span>ppm</span>`;
+
+                    // 2. Update Overall Status Badge
+                    const badgeEl = document.getElementById('overall-ai-badge');
+                    if (badgeEl) {
+                        badgeEl.innerText = `OVERALL STATUS: ${data.svm_status}`;
+                        badgeEl.style.backgroundColor = data.risk_color;
+                    }
+
+                    // 3. Helper function para sa Individual SVM Footer Color & Text
+                    const updateSvmFooter = (elemId, statusText) => {
+                        const el = document.getElementById(elemId);
+                        if (el && statusText) {
+                            const isSafe = statusText.includes('Safe');
+                            el.innerText = `SVM Status: ${statusText}`;
+                            el.className = `range-bar-footer ${isSafe ? 'green' : 'amber'}`;
+                        }
+                    };
+
+                    updateSvmFooter('card-svm-temp', data.temp_status);
+                    updateSvmFooter('card-svm-ph', data.ph_status);
+                    updateSvmFooter('card-svm-do', data.do_status);
+                }
+            })
+            .catch(error => console.error('Error fetching Hybrid AI data:', error));
+    }
+
+    // LIVE SENSOR UPDATES FUNCTION (Dito nakakabit ang instant AI update!)
     function triggerLiveDashboardUpdate() {
         const now = new Date();
         const year = now.getFullYear();
@@ -762,6 +685,9 @@
 
                 if (document.getElementById('val-turbidity'))
                     document.getElementById('val-turbidity').innerHTML = `${data.turbidity || '0.0'} <span>NTU</span>`;
+
+                // --- ETO ANG KONEKSYON: Kusa at sabay ding mag-a-update ang AI Prediction sa tuwing may bagong real-time reading! ---
+                updateAIPredictions();
             })
             .catch(error => console.error('Error fetching sensor data:', error));
     }
@@ -803,31 +729,6 @@
             .catch(error => console.error('Error triggering feeder:', error));
     }
 
-    // Fetch AI/ML Predictions from Backend (DINI INILAGAY)
-    function updateAIPredictions() {
-        fetch('/predict_ai')
-            .then(response => response.json())
-            .then(data => {
-                if (data.status === 'success') {
-                    // Update LSTM Forecast Cards
-                    document.getElementById('forecast-temp').innerText = data.forecast_temp + ' °C';
-                    document.getElementById('forecast-ph').innerText = data.forecast_ph;
-                    document.getElementById('forecast-do').innerText = data.forecast_do + ' ppm';
-
-                    // Update SVM Status Card
-                    const statusEl = document.getElementById('svm-status');
-                    const riskEl = document.getElementById('svm-risk-level');
-
-                    statusEl.innerText = data.svm_status;
-                    statusEl.style.color = data.risk_color;
-
-                    riskEl.innerText = data.svm_status === "SAFE" ? "Optimal" : "Warning / Critical";
-                    riskEl.style.color = data.risk_color;
-                }
-            })
-            .catch(error => console.error('Error fetching Hybrid AI data:', error));
-    }
-
     window.addEventListener('DOMContentLoaded', () => {
         const dateInput = document.getElementById('timeline-date');
         if (!dateInput.value) {
@@ -837,10 +738,6 @@
         calculateMonitoringProgress();
         triggerLiveDashboardUpdate();
         setInterval(triggerLiveDashboardUpdate, 2000);
-
-        // DINI INILAGAY ANG PAG-TAWAG SA AI PREDICTIONS
-        updateAIPredictions();
-        setInterval(updateAIPredictions, 5000);
     });
 </script>
 {% endblock %}
